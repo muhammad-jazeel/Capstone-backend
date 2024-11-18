@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div id="wrapper">
+        
+        <!-- header begin -->
+        {% include 'includes/navbar.html'%}
+        <!-- header close -->
+        <!-- content begin -->
+        <div class="no-bottom no-top zebra" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="subheader" class="jarallax text-light">
+                <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+									<h1>Services</h1>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- section close -->
+
+            <section id="section-cars" class="bg-gray-100">
+                <div class="container">
+                    <div class="row">
+                        <!-- Vendor Form -->
+                        <div class="col-lg-3 mb30">
+                            {% include 'includes/sidebar.html'%}
+                        </div>
+            
+                        <div class="col-lg-9">
+                            <h3 style="text-align: center;">Add Services</h3>
+                           
+                            <div class="card p-4 rounded-5 mb25" style="justify-content: center;"> 
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="serviceName" class="form-label text-uppercase fs-12 text-gray">Service Name</label>
+                                        <input type="text" class="form-control" id="serviceName" placeholder="Enter service name">
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="servicePrice" class="form-label text-uppercase fs-12 text-gray">Price</label>
+                                        <input type="number" class="form-control" id="servicePrice" placeholder="Enter price">
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="serviceDuration" class="form-label text-uppercase fs-12 text-gray">Duration</label>
+                                        <input type="text" class="form-control" id="serviceDuration" placeholder="Enter duration (e.g., 2 hours)">
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="startDate" class="form-label text-uppercase fs-12 text-gray">Start Date</label>
+                                        <input type="date" class="form-control" id="startDate">
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="endDate" class="form-label text-uppercase fs-12 text-gray">End Date</label>
+                                        <input type="date" class="form-control" id="endDate">
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="serviceDescription" class="form-label text-uppercase fs-12 text-gray">Description</label>
+                                        <textarea class="form-control" id="serviceDescription" rows="3" placeholder="Enter service description"></textarea>
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="serviceImage" class="form-label text-uppercase fs-12 text-gray">Image</label>
+                                        <input type="file" class="form-control" id="serviceImage">
+                                    </div>
+                        
+                                    <div class="mb-3">
+                                        <label for="staffAssigned" class="form-label text-uppercase fs-12 text-gray">Staff Assigned</label>
+                                        <input type="text" class="form-control" id="staffAssigned" placeholder="Enter staff name">
+                                    </div>
+                        
+                                    
+                                    <button class="btn-main" style="background-color: #000;"> <a href="{% url 'services' %}" style="color: #fff;">Back</a></button>
+                                    <button type="submit" class="btn-main" style="float: right;">Add Service</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        <!-- content close -->
+        
+    </div>
+
+
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/designesia.js' %}"></script>
+
+{% endblock %}

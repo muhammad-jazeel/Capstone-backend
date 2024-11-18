@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div id="wrapper">
+        <!-- header begin -->
+        {% include 'includes/navbar.html' %}
+        <!-- header close -->
+        <!-- content begin -->
+        <div class="no-bottom no-top zebra" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="subheader" class="jarallax text-light">
+                <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
+                <div class="center-y relative text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h1>Staff Management</h1>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- section close -->
+
+            <section id="section-staffs" class="bg-gray-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 mb30">
+                            {% include 'includes/sidebar.html' %}
+                        </div>
+
+                        <div class="col-lg-9">
+                            <h3>All Staff</h3>
+
+                            <!-- Search Bar and Add Staff Button -->
+                            <div class="search-bar" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+                                <form style="flex-grow: 1; margin-right: 10px;">
+                                    <div class="form-group" style="margin-bottom: 0; width: 100%;">
+                                        <input type="text" class="form-control" id="search" placeholder="Search Staff">
+                                        <a href="#"><span class="search_btn" style="margin-left: -25px; margin-top: 10px;"><i class="fa fa-search"></i></span></a>
+                                    </div>
+                                </form>
+                                
+                                <a href="{% url 'add_staff' %}" class="btn-main" style="white-space: nowrap; color: #fff;">Add Staff</a>
+                            </div>
+                            
+                            <!-- Filter Dropdown -->
+                            <div class="filter-dropdown" style="width: 25%; margin-bottom: 30px;">
+                                <select class="form-control" id="filter-options">
+                                    <option value="">Filter By</option>
+                                    <option value="department">By Department</option>
+                                    <option value="service">By Service</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Staff Cards -->
+                            <div class="card p-4 rounded-5">
+                                <div class="spacer-10"></div>
+                                <div class="row">
+                                    <div class="de-item-list no-border mb30">
+                                        <div class="d-img">
+                                            <img src="{% static 'images/staffs/staff1.jpg' %}" class="img-fluid" alt="Staff Photo">
+                                        </div>
+                                        <div class="d-info">
+                                            <div class="d-text">
+                                                <h4>John Doe</h4>
+                                                <div class="d-atr-group">
+                                                    <ul class="d-atr">
+                                                        <li><span>Department:</span> Maintenance</li>
+                                                        <li><span>Assigned Service:</span> Car Wash</li>
+                                                        <li><span>Email:</span> john.doe@example.com</li>
+                                                        <li><span>Phone:</span> +1234567890</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-price">
+                                            <a class="btn-main" href="{% url 'edit_staff' %}">Edit</a> 
+                                            <a class="btn-main btn-delete" href="{% url 'delete_staff' %}">Delete</a> 
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    
+                                    <div class="de-item-list no-border mb30">
+                                        <div class="d-img">
+                                            <img src="{% static 'images/staffs/staff2.jpg' %}" class="img-fluid" alt="Staff Photo">
+                                        </div>
+                                        <div class="d-info">
+                                            <div class="d-text">
+                                                <h4>Jane Smith</h4>
+                                                <div class="d-atr-group">
+                                                    <ul class="d-atr">
+                                                        <li><span>Department:</span> Cleaning</li>
+                                                        <li><span>Assigned Service:</span> Oil Change</li>
+                                                        <li><span>Email:</span> jane.smith@example.com</li>
+                                                        <li><span>Phone:</span> +0987654321</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-price">
+                                            <a class="btn-main" href="">Edit</a> 
+                                            <a class="btn-main btn-delete" href="">Delete</a> 
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    
+                                    <div class="de-item-list no-border mb30">
+                                        <div class="d-img">
+                                            <img src="{% static 'images/staffs/staff3.jpg' %}" class="img-fluid" alt="Staff Photo">
+                                        </div>
+                                        <div class="d-info">
+                                            <div class="d-text">
+                                                <h4>Mark Johnson</h4>
+                                                <div class="d-atr-group">
+                                                    <ul class="d-atr">
+                                                        <li><span>Department:</span> Maintenance</li>
+                                                        <li><span>Assigned Service:</span> Tire Rotation</li>
+                                                        <li><span>Email:</span> mark.johnson@example.com</li>
+                                                        <li><span>Phone:</span> +1231231234</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-price">
+                                            <a class="btn-main" href="">Edit</a> 
+                                            <a class="btn-main btn-delete" href="">Delete</a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- content close -->
+
+        <a href="#" id="back-to-top"></a>
+    </div>
+
+    <!-- Javascript Files -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/designesia.js' %}"></script>
+{% endblock %}

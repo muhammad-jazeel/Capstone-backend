@@ -1,0 +1,21 @@
+{% load static %}
+<div class="card p-4 rounded-5">
+    <div class="profile_avatar"> 
+        <div class="profile_name">
+            <h4>
+                Vendor Name                                              
+                <span class="profile_username text-gray">{{ request.user.email }}</span> 
+            </h4>
+        </div>
+    </div>
+    <div class="spacer-20"></div>
+    <ul class="menu-col">
+        <li><a href="{% url 'dashboard' %}" class="active"><i class="fa fa-home"></i>Dashboard</a></li>
+        <li><a href="{% url 'services' %}"><i class="fa-solid fa-screwdriver-wrench"></i>Services</a></li>
+        <li><a href="{% url 'staffs' %}"><i class="fa fa-users"></i>Staffs</a></li>
+        <li><a href="{% url 'departments' %}"><i class="fa fa-users"></i>Departments</a></li>
+        <li><a href=""><i class="fa-brands fa-product-hunt"></i>Products</a></li>
+        <li><a href=""><i class="fa fa-calendar"></i>My Orders</a></li>
+        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+    </ul>
+</div>

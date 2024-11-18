@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div id="wrapper">
+        
+        <!-- header begin -->
+        {% include 'includes/navbar.html'%}
+        <!-- header close -->
+        <!-- content begin -->
+        <div class="no-bottom no-top zebra" id="content">
+            <div id="top"></div>
+            
+            <!-- section begin -->
+            <section id="subheader" class="jarallax text-light">
+                <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h1>Services</h1>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- section close -->
+
+            <section id="section-cars" class="bg-gray-100">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 mb30">
+                            {% include 'includes/sidebar.html'%}
+                        </div>
+
+                        <div class="col-lg-9">
+                            <h3>All Services</h3>
+
+                            <div class="search-bar" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+                                <form style="flex-grow: 1; margin-right: 10px;">
+                                    <div class="form-group" style="margin-bottom: 0; width: 100%;">
+                                        <input type="text" class="form-control" id="search" placeholder="Search Services">
+                                        <a href="#"><span class="search_btn" style="margin-left: -25px; margin-top: 10px;"><i class="fa fa-search"></i></span></a>
+                                    </div>
+                                </form>
+                                
+                                <!-- Add Services Button -->
+                                <a href="{% url 'add_services_view' %}" class="btn-main" style="white-space: nowrap; color: #fff;">Add Services</a>
+                            </div>
+                            
+                            <div class="filter-dropdown" style="width: 25%; margin-bottom: 30px;">
+                                <select class="form-control" id="filter-options">
+                                    <option value="">Filter By</option>
+                                    <option value="staff">By Staff</option>
+                                    <option value="price">By Price</option>
+                                </select>
+                            </div>
+                            
+                            <!-- <div class="card p-4 rounded-5 mb25"> 
+                                <h4>Recent Services</h4>
+                        
+                                <table class="table de-table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">ID</span></th>
+                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Service Name</span></th>
+                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Duration</span></th>
+                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Staff Assigned</span></th>
+                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Price</span></th>
+                                    </tr>
+                                  </thead>
+                                 
+                                </table>
+                            </div> -->
+                            
+                            <div class="card p-4 rounded-5">
+                                <div class="spacer-10"></div>
+                                <div class="row">
+                                    <div class="de-item-list no-border mb30">
+                                        <div class="d-img">
+                                            <img src="{% static 'images/services/service1.jpg' %}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="d-info">
+                                            <div class="d-text">
+                                                <h4>Car Wash</h4> 
+                                                <div class="d-atr-group">
+                                                    <ul class="d-atr">
+                                                        <li><span>Staff Assigned:</span> John Doe</li> 
+                                                        <li><span>Price:</span> $50</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-price">
+                                            <a class="btn-main" href="">Edit</a> 
+                                            <a class="btn-main btn-delete" href="">Delete</a> 
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    
+                                    <div class="de-item-list no-border mb30">
+                                        <div class="d-img">
+                                            <img src="{% static 'images/services/service2.jpg' %}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="d-info">
+                                            <div class="d-text">
+                                                <h4>Oil Change</h4> 
+                                                <div class="d-atr-group">
+                                                    <ul class="d-atr">
+                                                        <li><span>Staff Assigned:</span> Jane Smith</li> 
+                                                        <li><span>Price:</span> $80</li> 
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-price">
+                                            <a class="btn-main" href="">Edit</a> 
+                                            <a class="btn-main btn-delete" href="">Delete</a> 
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    
+                                    <div class="de-item-list no-border mb30">
+                                        <div class="d-img">
+                                            <img src="{% static 'images/services/service3.jpg' %}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="d-info">
+                                            <div class="d-text">
+                                                <h4>Tire Rotation</h4> 
+                                                <div class="d-atr-group">
+                                                    <ul class="d-atr">
+                                                        <li><span>Staff Assigned:</span> Mark Johnson</li> 
+                                                        <li><span>Price:</span> $60</li> 
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-price">
+                                            <a class="btn-main" href="">Edit</a> 
+                                            <a class="btn-main btn-delete" href="">Delete</a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- content close -->
+
+        <a href="#" id="back-to-top"></a>
+    </div>
+
+    <!-- Javascript Files -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/designesia.js' %}"></script>
+{% endblock %}
