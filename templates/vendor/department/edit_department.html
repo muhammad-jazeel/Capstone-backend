@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="card p-4 rounded-5">
-                            <form method="post" action="{% url 'edit_department' %}">
+                            <form method="post" action="{% url 'edit_department' department.id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="name">Department Name</label>

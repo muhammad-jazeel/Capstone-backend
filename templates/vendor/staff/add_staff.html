@@ -4,29 +4,21 @@
 
 {% block content %}
 <div id="wrapper">
-    <!-- header begin -->
     {% include 'includes/navbar.html' %}
-    <!-- header close -->
-    <!-- content begin -->
     <div class="no-bottom no-top zebra" id="content">
         <div id="top"></div>
 
-        <!-- section begin -->
+        <!-- Section for header -->
         <section id="subheader" class="jarallax text-light">
             <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
             <div class="center-y relative text-center">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h1>Add Staff</h1>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    <h1>Add Staff</h1>
                 </div>
             </div>
         </section>
-        <!-- section close -->
 
+        <!-- Add Staff Form -->
         <section id="section-add-staff" class="bg-gray-100">
             <div class="container">
                 <div class="row">
@@ -35,6 +27,20 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="card p-4 rounded-5">
+                            <!-- Display Error Messages -->
+                            {% if messages %}
+                                <div class="mb-4">
+                                    {% for message in messages %}
+                                        {% if "error" in message.tags %}
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                {{ message }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
                             <form method="post" action="{% url 'add_staff' %}">
                                 {% csrf_token %}
                                 <div class="form-group">
@@ -54,16 +60,22 @@
                                     <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Phone Number" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="department">Department</label>
-                                    <select class="form-control" id="department" name="department">
+                                    <label for="departments">Departments</label>
+                                    <select class="form-control" id="departments" name="departments">
                                         <option value="" disabled selected>Select Department</option>
-                                        <!-- Populate dynamically -->
                                         {% for department in departments %}
                                             <option value="{{ department.id }}">{{ department.name }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <div class="text-center">
+
+                                <!-- Selected Departments -->
+                                <div class="selected-departments mt-3">
+                                    <label>Selected Departments:</label>
+                                    <div id="selected-departments-container" class="d-flex flex-wrap"></div>
+                                </div>
+
+                                <div class="text-center mt-4">
                                     <button type="submit" class="btn-main">Add Staff</button>
                                 </div>
                             </form>
@@ -75,6 +87,35 @@
     </div>
 </div>
 
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script src="{% static 'js/designesia.js' %}"></script>
+<script>
+    const departmentDropdown = document.getElementById('departments');
+    const selectedContainer = document.getElementById('selected-departments-container');
+
+    departmentDropdown.addEventListener('change', () => {
+        const selectedOption = departmentDropdown.options[departmentDropdown.selectedIndex];
+        const departmentId = selectedOption.value;
+        const departmentName = selectedOption.text;
+
+        if (document.getElementById(`selected-department-${departmentId}`)) {
+            return;
+        }
+
+        const selectedElement = document.createElement('div');
+        selectedElement.classList.add('selected-department', 'badge', 'bg-primary', 'text-white', 'me-2', 'mb-2');
+        selectedElement.id = `selected-department-${departmentId}`;
+        selectedElement.innerHTML = `
+            ${departmentName} 
+            <button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>
+            <input type="hidden" name="departments" value="${departmentId}">
+        `;
+
+        selectedElement.querySelector('.btn-close').addEventListener('click', () => {
+            selectedElement.remove();
+        });
+
+        selectedContainer.appendChild(selectedElement);
+    });
+</script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/designesia.js' %}"></script>
 {% endblock %}

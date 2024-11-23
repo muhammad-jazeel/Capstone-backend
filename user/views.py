@@ -35,14 +35,14 @@ def signup(request):
                 last_name='',
                 user_type=user_type
             )
-            login(request, user)  
+            auth_login(request, user)  
             return redirect('dashboard')  
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
             return render(request, 'auth/signup.html')
     return render(request, 'auth/signup.html')
 
-def login(request):
+def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')

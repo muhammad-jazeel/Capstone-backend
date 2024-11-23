@@ -3,116 +3,106 @@
 {% load static %}
 
 {% block content %}
-    <div id="wrapper">
-        
-        <!-- header begin -->
-        {% include 'includes/navbar.html'%}
-        <!-- header close -->
-        <!-- content begin -->
-        <div class="no-bottom no-top zebra" id="content">
-            <div id="top"></div>
-            
-            <!-- section begin -->
-            <section id="subheader" class="jarallax text-light">
-                <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
-                    <div class="center-y relative text-center">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-									<h1>Dashboard</h1>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <!-- section close -->
+<div id="wrapper">
+    {% include 'includes/navbar.html' %}
+    <div class="no-bottom no-top zebra" id="content">
+        <div id="top"></div>
 
-            <section id="section-cars" class="bg-gray-100">
+        <!-- Section for header -->
+        <section id="subheader" class="jarallax text-light">
+            <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
+            <div class="center-y relative text-center">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 mb30">
-                            {% include 'includes/sidebar.html'%}
+                        <div class="col-md-12 text-center">
+                            <h1>Dashboard</h1>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section close -->
+
+        <section id="section-cars" class="bg-gray-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 mb30">
+                        {% include 'includes/sidebar.html' %}
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <!-- Total Services -->
+                            <div class="col-lg-3 col-6 mb25 order-sm-1">
+                                <div class="card p-4 rounded-5">
+                                    <div class="symbol mb40">
+                                        <i class="fa-solid id-color fa-2x fa-wrench"></i>
+                                    </div>
+                                    <span class="h1 mb0">{{ total_services }}</span>
+                                    <span class="text-gray">Total Services</span>
+                                </div>
+                            </div>
+
+                            <!-- Total Staff -->
+                            <div class="col-lg-3 col-6 mb25 order-sm-1">
+                                <div class="card p-4 rounded-5">
+                                    <div class="symbol mb40">
+                                        <i class="fa-solid id-color fa-2x fa-users-gear"></i>
+                                    </div>
+                                    <span class="h1 mb0">{{ total_staff }}</span>
+                                    <span class="text-gray">Staffs</span>
+                                </div>
+                            </div>
+
+                            <!-- Dummy Data: Active Services -->
+                            <div class="col-lg-3 col-6 mb25 order-sm-1">
+                                <div class="card p-4 rounded-5">
+                                    <div class="symbol mb40">
+                                        <i class="fa id-color fa-2x fa-calendar-check-o"></i>
+                                    </div>
+                                    <span class="h1 mb0">{{ active_departments }}</span>
+                                    <span class="text-gray">Active Departments</span>
+                                </div>
+                            </div>
+
+                            <!-- Dummy Data: Cancel Orders -->
+                            <div class="col-lg-3 col-6 mb25 order-sm-1">
+                                <div class="card p-4 rounded-5">
+                                    <div class="symbol mb40">
+                                        <i class="fa id-color fa-2x fa-calendar-times-o"></i>
+                                    </div>
+                                    <span class="h1 mb0">24</span>
+                                    <span class="text-gray">Cancel Orders</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-lg-9">
-                            <div class="row">
-                                <div class="col-lg-3 col-6 mb25 order-sm-1">
-                                    <div class="card p-4 rounded-5">
-                                        <div class="symbol mb40">
-                                            <i class="fa id-color fa-2x fa-calendar-check-o"></i>
-                                        </div>
-                                        <span class="h1 mb0">32</span>
-                                        <span class="text-gray">Active Services</span>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-6 mb25 order-sm-1">
-                                    <div class="card p-4 rounded-5">
-                                        <div class="symbol mb40">
-                                            <i class="fa-solid id-color fa-2x fa-wrench"></i>
-                                        </div>
-                                        <span class="h1 mb0">727</span>
-                                        <span class="text-gray">Total Services</span>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-6 mb25 order-sm-1">
-                                    <div class="card p-4 rounded-5">
-                                        <div class="symbol mb40">
-                                            <i class="fa-solid id-color fa-2x fa-users-gear"></i>
-                                        </div>
-                                        <span class="h1 mb0">152</span>
-                                        <span class="text-gray">Staffs</span>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-6 mb25 order-sm-1">
-                                    <div class="card p-4 rounded-5">
-                                        <div class="symbol mb40">
-                                            <i class="fa id-color fa-2x fa-calendar-times-o"></i>
-                                        </div>
-                                        <span class="h1 mb0">24</span>
-                                        <span class="text-gray">Cancel Orders</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card p-4 rounded-5 mb25"> 
-                                <h4>Recent Services</h4>
+                        <div class="card p-4 rounded-5 mb25"> 
+                            <h4>Recent Services</h4>
                         
-                                <table class="table de-table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">ID</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Service Name</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Duration</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Staff Assigned</span></th>
-                                      <th scope="col"><span class="text-uppercase fs-12 text-gray">Price</span></th>
-                                    </tr>
-                                  </thead>
-                                 
-                                </table>
-                            </div>
-
+                            <table class="table de-table">
+                              <thead>
+                                <tr>
+                                  <th scope="col"><span class="text-uppercase fs-12 text-gray">ID</span></th>
+                                  <th scope="col"><span class="text-uppercase fs-12 text-gray">Service Name</span></th>
+                                  <th scope="col"><span class="text-uppercase fs-12 text-gray">Duration</span></th>
+                                  <th scope="col"><span class="text-uppercase fs-12 text-gray">Staff Assigned</span></th>
+                                  <th scope="col"><span class="text-uppercase fs-12 text-gray">Price</span></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- Add service rows dynamically if needed -->
+                              </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </section>
-			
-			
-        </div>
-        <!-- content close -->
-
-        <a href="#" id="back-to-top"></a>
-        
-        
+            </div>
+        </section>
     </div>
+</div>
 
-
-    <!-- Javascript Files
-    ================================================== -->
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script src="{% static 'js/designesia.js' %}"></script>
-
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/designesia.js' %}"></script>
 {% endblock %}

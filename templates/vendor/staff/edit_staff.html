@@ -35,39 +35,38 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="card p-4 rounded-5">
-                            <form method="post" action="{% url 'edit_staff'%}">
+                            <form method="post" action="{% url 'edit_staff' staff.id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="first_name">First Name</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ staff.first_name }}" placeholder="Enter First Name" required>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ staff.first_name }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ staff.last_name }}" placeholder="Enter Last Name" required>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ staff.last_name }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ staff.email }}" placeholder="Enter Email" required>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ staff.email }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone_number">Phone Number</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ staff.phone_number }}" placeholder="Enter Phone Number" required>
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ staff.phone_number }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="department">Department</label>
-                                    <select class="form-control" id="department" name="department">
-                                        <option value="" disabled>Select Department</option>
+                                    <label for="departments">Departments</label>
+                                    <select class="form-control" id="departments" name="departments" multiple>
                                         {% for department in departments %}
-                                            <option value="{{ department.id }}" {% if staff.department and staff.department.id == department.id %}selected{% endif %}>
+                                            <option value="{{ department.id }}" {% if department in staff.departments.all %}selected{% endif %}>
                                                 {{ department.name }}
                                             </option>
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <div class="text-center">
+                                <div class="text-center mt-4">
                                     <button type="submit" class="btn-main">Update Staff</button>
                                 </div>
-                            </form>
+                            </form>                            
                         </div>
                     </div>
                 </div>

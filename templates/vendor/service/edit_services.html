@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div id="wrapper">
+    {% include 'includes/navbar.html'%}
+    <div class="no-bottom no-top zebra" id="content">
+        <div id="top"></div>
+
+        <!-- section begin -->
+        <section id="subheader" class="jarallax text-light">
+            <img src="{% static 'images/background/14.jpg' %}" class="jarallax-img" alt="">
+            <div class="center-y relative text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h1>Edit Service</h1>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- section close -->
+
+        <section id="section-cars" class="bg-gray-100">
+            <div class="container">
+                <div class="row">
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 mb30">
+                        {% include 'includes/sidebar.html'%}
+                    </div>
+                    
+                    <!-- Edit Service Form -->
+                    <div class="col-lg-9">
+                        <h3 style="text-align: center;">Edit Service</h3>
+                        <div class="card p-4 rounded-5 mb25" style="justify-content: center;">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                            
+                            <form method="post" action="{% url 'edit_service_view' service.id %}">
+                                {% csrf_token %}
+
+                                <!-- Service Name -->
+                                <div class="mb-3">
+                                    <label for="serviceName" class="form-label">Service Name</label>
+                                    <input type="text" class="form-control" id="serviceName" name="name" value="{{ service.name }}" required>
+                                </div>
+
+                                <!-- Price -->
+                                <div class="mb-3">
+                                    <label for="servicePrice" class="form-label">Price</label>
+                                    <input type="number" class="form-control" id="servicePrice" name="price" value="{{ service.price }}" required>
+                                </div>
+
+                                <!-- Duration -->
+                                <div class="mb-3">
+                                    <label for="serviceDuration" class="form-label">Duration (Minutes)</label>
+                                    <input type="number" class="form-control" id="serviceDuration" name="duration_minutes" value="{{ service.duration_minutes }}" required>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label for="serviceDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="serviceDescription" name="description" rows="3" required>{{ service.description }}</textarea>
+                                </div>
+
+                                <!-- Start Time -->
+                                <div class="mb-3">
+                                    <label for="startTime" class="form-label">Start Time</label>
+                                    <input type="time" class="form-control" id="startTime" name="start_time" value="{{ service.start_time|time:"H:i" }}" required>
+                                </div>
+
+                                <!-- End Time -->
+                                <div class="mb-3">
+                                    <label for="endTime" class="form-label">End Time</label>
+                                    <input type="time" class="form-control" id="endTime" name="end_time" value="{{ service.end_time|time:"H:i" }}" required>
+                                </div>
+
+                                <!-- Time Slots -->
+                                <div class="mb-3">
+                                    <label class="form-label">Time Slots</label>
+                                    <div id="time-slots-container" class="d-flex flex-wrap">
+                                        {% for slot in slots %}
+                                            <div class="selected-slot badge bg-primary text-white me-2 mb-2" data-slot="{{ slot }}">
+                                                {{ slot|time:"H:i" }}
+                                                <button type="button" class="btn-close btn-close-white ms-2 remove-slot" aria-label="Remove"></button>
+                                                <input type="hidden" name="removed_slots" value="{{ slot|time:"H:i" }}">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <!-- Staff Selection -->
+                                <div class="mb-3">
+                                    <label for="staffAssigned" class="form-label">Staff Assigned</label>
+                                    <select class="form-control" id="staffAssigned" name="staffs" multiple>
+                                        {% for staff in staffs %}
+                                            <option value="{{ staff.id }}" {% if staff.id in assigned_staff_ids %}selected{% endif %}>
+                                                {{ staff.first_name }} {{ staff.last_name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <!-- Status Selection -->
+                                <div class="mb-3">
+                                    <label for="serviceStatus" class="form-label">Status</label>
+                                    <select class="form-control" id="serviceStatus" name="status">
+                                        <option value="active" {% if service.status == "active" %}selected{% endif %}>Active</option>
+                                        <option value="inactive" {% if service.status == "inactive" %}selected{% endif %}>Inactive</option>
+                                    </select>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <a href="{% url 'services' %}" class="btn-main" style="background-color: #000; color: #fff;">Back</a>
+                                    <button type="submit" class="btn-main">Update Service</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.remove-slot').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const slotDiv = btn.parentElement;
+            slotDiv.remove(); 
+        });
+    });
+</script>
+
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/designesia.js' %}"></script>
+{% endblock %}

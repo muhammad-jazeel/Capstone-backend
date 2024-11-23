@@ -10,12 +10,40 @@
     </div>
     <div class="spacer-20"></div>
     <ul class="menu-col">
-        <li><a href="{% url 'dashboard' %}" class="active"><i class="fa fa-home"></i>Dashboard</a></li>
-        <li><a href="{% url 'services' %}"><i class="fa-solid fa-screwdriver-wrench"></i>Services</a></li>
-        <li><a href="{% url 'staffs' %}"><i class="fa fa-users"></i>Staffs</a></li>
-        <li><a href="{% url 'departments' %}"><i class="fa fa-users"></i>Departments</a></li>
-        <li><a href=""><i class="fa-brands fa-product-hunt"></i>Products</a></li>
-        <li><a href=""><i class="fa fa-calendar"></i>My Orders</a></li>
-        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+        <li>
+            <a href="{% url 'dashboard' %}" class="{% if request.path == '/dashboard/' %}active{% endif %}">
+                <i class="fa fa-home"></i>Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'services' %}" class="{% if request.path == '/services/' %}active{% endif %}">
+                <i class="fa-solid fa-screwdriver-wrench"></i>Services
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'staffs' %}" class="{% if request.path == '/staffs/' %}active{% endif %}">
+                <i class="fa fa-users"></i>Staffs
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'departments' %}" class="{% if request.path == '/departments/' %}active{% endif %}">
+                <i class="fa fa-users"></i>Departments
+            </a>
+        </li>
+        <li>
+            <a href="" class="{% if request.path == '/products/' %}active{% endif %}">
+                <i class="fa-brands fa-product-hunt"></i>Products
+            </a>
+        </li>
+        <li>
+            <a href="" class="{% if request.path == '/orders/' %}active{% endif %}">
+                <i class="fa fa-calendar"></i>My Orders
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'logout' %}">
+                <i class="fa fa-sign-out"></i>Sign Out
+            </a>
+        </li>
     </ul>
 </div>

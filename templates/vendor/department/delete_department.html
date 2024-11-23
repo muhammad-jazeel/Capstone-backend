@@ -33,7 +33,7 @@
                     <div class="col-lg-9">
                         <div class="card p-4 rounded-5 text-center">
                             <p>Are you sure you want to delete the department <strong>{{ department.name }}</strong>?</p>
-                            <form method="post" action="{% url 'delete_department' %}">
+                            <form method="post" action="{% url 'delete_department' department.id %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn-main">Yes, Delete</button>
                                 <a href="{% url 'departments' %}" class="btn-secondary">Cancel</a>
