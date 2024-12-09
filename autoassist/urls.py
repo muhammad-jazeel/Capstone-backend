@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from .views import *
 
 urlpatterns = [
@@ -29,3 +30,5 @@ urlpatterns = [
     path('dashboard/', dashboard_view, name='dashboard'),
 
 ]
+
+urlpatterns += staticfiles_urlpatterns()
